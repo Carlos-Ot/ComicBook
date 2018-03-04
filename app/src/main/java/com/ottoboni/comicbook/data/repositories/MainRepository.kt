@@ -21,10 +21,10 @@ class MainRepository {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     collections: List<Collection> -> collections.forEach {
-                    collection: Collection -> Log.d("ottoboni", collection.collectionName)
+                    collection: Collection -> Log.d("xablau", collection.collectionName)
                 }
                 },{
-                    error -> Log.e("ottoboni", error.message)
+                    error -> Log.e("xablau", error.message)
                 })
     }
 
