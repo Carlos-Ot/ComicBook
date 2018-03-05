@@ -21,9 +21,4 @@ class MainActivity : AppCompatActivity() {
 
         mainPresenter = MainPresenter(mainFragment, MainRepository())
     }
-
-    override fun onResume() {
-        super.onResume()
-        mainPresenter.getCollections()
-    }
 }

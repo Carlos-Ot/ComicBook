@@ -5,5 +5,5 @@ package com.ottoboni.comicbook.features.common
  */
 interface BaseView<P> {
 
-    var mPresenter: P
+    var presenter: P
 }
