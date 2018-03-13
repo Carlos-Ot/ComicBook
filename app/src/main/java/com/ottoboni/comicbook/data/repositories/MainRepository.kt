@@ -23,6 +23,14 @@ class MainRepository {
         apiClient.getCollections()
                 .subscribeOn(Schedulers.io())
                 .flatMap { collections -> Observable.fromIterable(collections) }
+                /*
+                * Another approach
+                *.flatMap { collection: Collection ->
+                *    val publishing: Publishing = apiClient.getPublishing(collection.publishing).blockingGet()
+                *    Observable.just(collection.apply { publishingName = publishing.publishingName })
+                *}.toList().toObservable()
+                *
+                */
                 .flatMap { collection: Collection ->
                     Observable.zip(
                             Observable.just(collection),
