@@ -31,7 +31,7 @@ class MainFragment : Fragment(), MainView {
 
         with(root) {
             listAdapter = MainListAdapter(root.context, emptyList())
-            val collectionList = findViewById<RecyclerView>(R.id.collection_list).apply {
+            findViewById<RecyclerView>(R.id.collection_list).apply {
                 adapter = listAdapter
                 layoutManager = LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
             }
