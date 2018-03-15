@@ -11,9 +11,10 @@ Simple Study Project to use RxJava, Kotlin and MVP
   - [ ] Create ComicBook Local DataSource
     - [ ] Create ComicBook Dao
   - [ ] Create ComicBook Repository
+  - [ ] Implement Tests for CollectionDetail feature
 
 
-#### Creator| 
+#### Creator
 
 [![Carlos Ottoboni](http://gravatar.com/avatar/51f14f9248757e98855361ba7efb154c?s=70)](https://github.com/Carlos-Ot) |
 ---------------------------------------------------------------------------------------------------------------------|
