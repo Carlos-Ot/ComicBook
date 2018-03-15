@@ -3,7 +3,7 @@ package com.ottoboni.comicbook.features.main
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.ottoboni.comicbook.R
-import com.ottoboni.comicbook.data.repositories.MainRepository
+import com.ottoboni.comicbook.data.source.remote.CollectionRemoteDataSource
 import com.ottoboni.comicbook.util.extensions.replaceFragment
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +19,6 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(it, R.id.fragment_holder)
         }
 
-        mainPresenter = MainPresenter(mainFragment, MainRepository())
+        mainPresenter = MainPresenter(mainFragment, CollectionRemoteDataSource())
     }
 }

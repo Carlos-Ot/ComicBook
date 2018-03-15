@@ -1,4 +1,4 @@
-package com.ottoboni.comicbook.data.source.remote
+package com.ottoboni.comicbook.data.source.remote.common
 
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.model.Publishing

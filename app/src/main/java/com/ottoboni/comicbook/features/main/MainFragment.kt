@@ -13,7 +13,6 @@ import android.widget.Toast
 import com.ottoboni.comicbook.R
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.features.collection.CollectionDetail
-import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
  * Created by caoj on 18/02/18.
@@ -51,7 +50,7 @@ class MainFragment : Fragment(), MainView {
 
     override fun onResume() {
         super.onResume()
-        presenter.getCollections()
+        presenter.loadCollections(true)
     }
 
     override fun showCollections(collections: List<Collection>) {

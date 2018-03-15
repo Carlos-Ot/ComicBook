@@ -1,4 +1,4 @@
-package com.ottoboni.comicbook.data.source.remote
+package com.ottoboni.comicbook.data.source.remote.common
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

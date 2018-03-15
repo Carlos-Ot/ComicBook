@@ -1,27 +1,25 @@
-package com.ottoboni.comicbook.data.repositories
+package com.ottoboni.comicbook.data.source.remote
 
 import android.util.Log
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.model.Publishing
-import com.ottoboni.comicbook.data.source.remote.ServiceClient
+import com.ottoboni.comicbook.data.source.CollectionDataSource
+import com.ottoboni.comicbook.data.source.remote.common.ServiceClient
 import io.reactivex.Observable
-import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by caoj on 03/03/18.
  */
 
-class MainRepository {
+class CollectionRemoteDataSource : CollectionDataSource {
 
     private val apiClient = ServiceClient().getApiClient()
 
-    fun getCollections(callback: RequestCallback) {
-        apiClient.getCollections()
-                .subscribeOn(Schedulers.io())
+    override fun getCollections(): Observable<List<Collection>> {
+       return apiClient.getCollections()
                 .flatMap { collections -> Observable.fromIterable(collections) }
                 /*
                 * Another approach
@@ -42,18 +40,14 @@ class MainRepository {
                             }
                     )
                 }.toList().toObservable()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ collections: List<Collection> ->
-                    callback.onSuccess(collections)
-                }, { error ->
-                    Log.e("xablau", error.message)
-                    callback.onError()
-                })
     }
 
-    interface RequestCallback {
-        fun onSuccess(collections: List<Collection>)
-        fun onError()
+    override fun saveCollection(collection: Collection) {
+        //Not required, the client is not allowed to save new Collections
+    }
+
+    override fun refreshCollections() {
+        //Not required, all the logic were handled by the {@link CollectionRepository}
     }
 
 }
