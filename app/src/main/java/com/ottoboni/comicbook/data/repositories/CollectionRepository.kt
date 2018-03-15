@@ -25,7 +25,7 @@ class CollectionRepository(
                 collectionRemoteDataSource: CollectionDataSource,
                 collectionLocalDataSource: CollectionDataSource
                 ): CollectionRepository {
-            return instance ?: getInstance(collectionRemoteDataSource, collectionLocalDataSource)
+            return instance ?: CollectionRepository(collectionRemoteDataSource, collectionLocalDataSource)
                     .apply { instance = this }
 
         }

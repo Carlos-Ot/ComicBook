@@ -20,6 +20,10 @@ class MainPresenter(private val view: MainView, private val repository: Collecti
 
     fun loadCollections(forceUpdate: Boolean) {
 
+        if (forceUpdate) {
+            repository.refreshCollections()
+        }
+
         compositeDisposable.clear()
 
         val disposable = repository.getCollections()

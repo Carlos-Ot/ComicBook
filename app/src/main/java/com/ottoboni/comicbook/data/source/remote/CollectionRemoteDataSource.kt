@@ -1,20 +1,17 @@
 package com.ottoboni.comicbook.data.source.remote
 
-import android.util.Log
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.model.Publishing
 import com.ottoboni.comicbook.data.source.CollectionDataSource
 import com.ottoboni.comicbook.data.source.remote.common.ServiceClient
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
-import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by caoj on 03/03/18.
  */
 
-class CollectionRemoteDataSource : CollectionDataSource {
+object CollectionRemoteDataSource : CollectionDataSource {
 
     private val apiClient = ServiceClient().getApiClient()
 
