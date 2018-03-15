@@ -1,4 +1,4 @@
-package com.ottoboni.comicbook.features.common
+package com.ottoboni.comicbook.util.extensions
 
 
 import android.support.annotation.IdRes

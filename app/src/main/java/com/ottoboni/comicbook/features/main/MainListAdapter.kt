@@ -9,12 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.ottoboni.comicbook.R
 import com.ottoboni.comicbook.data.model.Collection
+import com.ottoboni.comicbook.util.extensions.onClick
 
 
 /**
  * Created by caoj on 05/03/18.
  */
-class MainListAdapter constructor(val context: Context, items: List<Collection>) : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
+class MainListAdapter constructor(val context: Context, items: List<Collection>, private val itemClickListener: (View, Int, Int) -> Unit) : RecyclerView.Adapter<MainListAdapter.ViewHolder>() {
 
     var collections: List<Collection> = items
         set(items) {
@@ -24,8 +25,11 @@ class MainListAdapter constructor(val context: Context, items: List<Collection>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.collection_list_item, parent, false)
-
-        return ViewHolder(view)
+        
+        return ViewHolder(view).onClick {
+            view, position, type ->
+            itemClickListener(view, position, type)
+        }
     }
 
     override fun getItemCount(): Int {

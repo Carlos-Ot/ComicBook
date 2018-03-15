@@ -22,4 +22,8 @@ class MainPresenter(private val view: MainView, private val repository: MainRepo
         })
     }
 
+    fun handleItemClick(collection: Collection) {
+        view.callCollectionDetail(collection.collectionId)
+    }
+
 }

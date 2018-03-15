@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.ottoboni.comicbook.R
 import com.ottoboni.comicbook.data.repositories.MainRepository
-import com.ottoboni.comicbook.features.common.replaceFragment
+import com.ottoboni.comicbook.util.extensions.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 

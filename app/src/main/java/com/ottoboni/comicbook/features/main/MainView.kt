@@ -9,4 +9,5 @@ import com.ottoboni.comicbook.features.common.BaseView
 interface MainView : BaseView<MainPresenter> {
     fun showCollections(collections: List<Collection>)
     fun showEmptyData()
+    fun callCollectionDetail(collectionId: String)
 }
