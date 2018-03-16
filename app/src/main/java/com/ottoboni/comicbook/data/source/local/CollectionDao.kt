@@ -3,6 +3,7 @@ package com.ottoboni.comicbook.data.source.local
 import android.arch.persistence.room.*
 import com.ottoboni.comicbook.data.model.Collection
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.Single
 
 /**

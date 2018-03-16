@@ -1,12 +1,12 @@
 package com.ottoboni.comicbook.features.main
 
+import android.util.Log
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.repositories.CollectionRepository
-import com.ottoboni.comicbook.data.source.remote.CollectionRemoteDataSource
 import com.ottoboni.comicbook.features.common.BasePresenter
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
@@ -20,6 +20,8 @@ class MainPresenter(private val view: MainView, private val repository: Collecti
 
     fun loadCollections(forceUpdate: Boolean) {
 
+        view.setProgressIndicator(true)
+
         if (forceUpdate) {
             repository.refreshCollections()
         }
@@ -27,13 +29,20 @@ class MainPresenter(private val view: MainView, private val repository: Collecti
         compositeDisposable.clear()
 
         val disposable = repository.getCollections()
+                .flatMap { collections: List<Collection> -> Flowable.fromIterable(collections) }
+                .flatMap { collection: Collection ->
+                    Log.d("xablau", "PRESENTER:: Collection Name: ${collection.collectionName}")
+                    Flowable.just(collection)
+                }.toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { collections: List<Collection> ->
+                            view.setProgressIndicator(false)
                             view.showCollections(collections)
                         },
                         {
+                            view.setProgressIndicator(false)
                             view.showEmptyData()
                         })
 
