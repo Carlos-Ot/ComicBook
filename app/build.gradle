@@ -26,24 +26,42 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //Kotlin dependencies
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //Android core dependencies
     implementation "com.android.support:appcompat-v7:$android_support_version"
     implementation "com.android.support.constraint:constraint-layout:$android_support_library_version"
+    implementation "com.android.support:recyclerview-v7:$android_support_version"
+
+    //RxJava2
     implementation "io.reactivex.rxjava2:rxandroid:$rxjava_android_version"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.android.support.constraint:constraint-layout:$android_support_library_version"
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "com.android.support.test:runner:$espresso_runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_core_version"
-    implementation "com.android.support:recyclerview-v7:$android_support_version"
 
-
-    //Room
+    //Room Persistence
     implementation "android.arch.persistence.room:rxjava2:$room_version"
     implementation "android.arch.persistence.room:runtime:$room_version"
     kapt "android.arch.persistence.room:compiler:$room_version"
     androidTestImplementation "android.arch.core:core-testing:$room_version"
+
+    //Unit Tests
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrest_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    //Android testing
+    androidTestImplementation "com.android.support.test:runner:$espresso_runner_version"
+    androidTestImplementation "com.android.support.test:rules:$espresso_runner_version"
+    androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+
+    //Android UI Testing
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espresso_core_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espresso_core_version"
 }

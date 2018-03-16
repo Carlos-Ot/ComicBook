@@ -1,7 +1,9 @@
 package com.ottoboni.comicbook.data.repositories
 
+import android.util.Log
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.source.CollectionDataSource
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
@@ -31,12 +33,18 @@ class CollectionRepository(
         }
     }
 
-    override fun getCollections(): Observable<List<Collection>> {
+    override fun getCollections(): Flowable<List<Collection>> {
+
+        val remoteCollections = getAndSaveRemoteCollections()
 
         if (forceUpdate) {
-            return getAndSaveRemoteCollections()
+            return remoteCollections
         } else {
-            return getAndSaveLocalCollections()
+            val localCollections = getAndSaveLocalCollections()
+
+            return Flowable.concat(localCollections, remoteCollections)
+                    .firstOrError()
+                    .toFlowable()
         }
     }
 
@@ -48,27 +56,21 @@ class CollectionRepository(
         collectionLocalDataSource.saveCollection(collection)
     }
 
-    private fun getAndSaveRemoteCollections() : Observable<List<Collection>> {
+    private fun getAndSaveRemoteCollections(): Flowable<List<Collection>> {
         return collectionRemoteDataSource
                 .getCollections()
                 .flatMap { collections: List<Collection> ->
-                    Observable.fromIterable(collections)
+                    Flowable.fromIterable(collections)
                             .doOnNext { collection: Collection ->
                                 collectionLocalDataSource.saveCollection(collection)
                             }
-                }.toList().toObservable()
+                }.toList().toFlowable()
                 .doOnComplete { forceUpdate = false }
     }
 
-    private fun getAndSaveLocalCollections() : Observable<List<Collection>> {
+    private fun getAndSaveLocalCollections(): Flowable<List<Collection>> {
         return collectionLocalDataSource
                 .getCollections()
-                .flatMap { collections: List<Collection> ->
-                    Observable.fromIterable(collections)
-                            .doOnNext { collection: Collection ->
-                                //Do something with data
-                            }
-                }.toList().toObservable()
     }
 
 }

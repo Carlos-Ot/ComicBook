@@ -4,6 +4,7 @@ import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.model.Publishing
 import com.ottoboni.comicbook.data.source.CollectionDataSource
 import com.ottoboni.comicbook.data.source.remote.common.ServiceClient
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.functions.BiFunction
 
@@ -15,7 +16,7 @@ object CollectionRemoteDataSource : CollectionDataSource {
 
     private val apiClient = ServiceClient().getApiClient()
 
-    override fun getCollections(): Observable<List<Collection>> {
+    override fun getCollections(): Flowable<List<Collection>> {
        return apiClient.getCollections()
                 .flatMap { collections -> Observable.fromIterable(collections) }
                 /*
@@ -36,7 +37,7 @@ object CollectionRemoteDataSource : CollectionDataSource {
                                 }
                             }
                     )
-                }.toList().toObservable()
+                }.toList().toFlowable()
     }
 
     override fun saveCollection(collection: Collection) {

@@ -1,6 +1,7 @@
 package com.ottoboni.comicbook.data.source
 
 import com.ottoboni.comicbook.data.model.Collection
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
@@ -8,7 +9,7 @@ import io.reactivex.Observable
  */
 interface CollectionDataSource {
 
-    fun getCollections(): Observable<List<Collection>>
+    fun getCollections(): Flowable<List<Collection>>
 
     fun refreshCollections()
 
