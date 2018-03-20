@@ -1,17 +1,15 @@
 package com.ottoboni.comicbook.data.repositories
 
-import android.util.Log
 import com.ottoboni.comicbook.data.model.Collection
 import com.ottoboni.comicbook.data.source.CollectionDataSource
 import io.reactivex.Flowable
-import io.reactivex.Observable
 
 /**
  * Created by caoj on 15/03/18.
  */
 class CollectionRepository(
-       private val collectionRemoteDataSource: CollectionDataSource,
-       private val collectionLocalDataSource: CollectionDataSource
+       val collectionRemoteDataSource: CollectionDataSource,
+       val collectionLocalDataSource: CollectionDataSource
 ) : CollectionDataSource {
 
     private var forceUpdate = false
