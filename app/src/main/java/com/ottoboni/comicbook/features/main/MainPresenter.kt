@@ -10,7 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 
-class MainPresenter(private val view: MainView, private val repository: CollectionRepository): BasePresenter {
+class MainPresenter(private val view: MainView, private val repository: CollectionRepository) : BasePresenter {
 
     private val compositeDisposable = CompositeDisposable()
 
