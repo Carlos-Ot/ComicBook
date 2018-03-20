@@ -56,7 +56,7 @@ class MainFragment : Fragment(), MainView {
     }
 
     override fun setProgressIndicator(active: Boolean) {
-        var visibility = if (active) View.VISIBLE else View.GONE
+        val visibility = if (active) View.VISIBLE else View.GONE
 
         progress_indicator.visibility = visibility
         label_progress_loading.visibility = visibility
