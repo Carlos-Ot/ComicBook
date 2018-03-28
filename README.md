@@ -3,7 +3,7 @@ Simple Study Project to use RxJava, Kotlin and MVP
 
 ## TODOs
 
-- [ ] Implement Tests for main feature
+- [ x ] Implement Tests for main feature
 - [ ] Implement CollectionDetails feature
   - [ ] Create ComicBook Model
   - [ ] Create ComicBook Remote DataSource
