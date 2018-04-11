@@ -25,6 +25,7 @@ class MainFragment : Fragment(), MainView {
     private lateinit var listAdapter: MainListAdapter
 
     companion object {
+        @JvmStatic
         fun newInstance() = MainFragment();
     }
 

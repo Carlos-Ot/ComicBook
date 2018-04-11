@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "608006426150",
+    "firebase_url": "https://comicbook-c89b2.firebaseio.com",
+    "project_id": "comicbook-c89b2",
+    "storage_bucket": "comicbook-c89b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608006426150:android:272c90299686769f",
+        "android_client_info": {
+          "package_name": "com.ottoboni.comicbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608006426150-k7jobrqn35jvnsei76df3afk9n77vd40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOcclvreBdnWu8vCYY7r0l10btVLLdnIs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
