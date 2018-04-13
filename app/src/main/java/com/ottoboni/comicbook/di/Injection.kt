@@ -1,6 +1,7 @@
 package com.ottoboni.comicbook.di
 
 import android.content.Context
+import com.ottoboni.comicbook.app.App
 import com.ottoboni.comicbook.data.repositories.CollectionRepository
 import com.ottoboni.comicbook.data.source.local.CollectionDao
 import com.ottoboni.comicbook.data.source.local.CollectionLocalDataSource
@@ -12,11 +13,15 @@ import com.ottoboni.comicbook.data.source.remote.CollectionRemoteDataSource
  */
 object Injection {
 
-    fun providesCollectionRepository(context: Context): CollectionRepository {
+    fun providesCollectionRepository(): CollectionRepository {
         return CollectionRepository.getInstance(
                 providesCollectionRemoteDataSource(),
-                providesCollectionLocalDataSource(providesDatabase(context).collectionDao())
+                providesCollectionLocalDataSource(providesDatabase(providesApplicationContext()).collectionDao())
         )
+    }
+
+    fun providesApplicationContext(): Context {
+        return App.getApplicationContext();
     }
 
     private fun providesCollectionRemoteDataSource(): CollectionRemoteDataSource {

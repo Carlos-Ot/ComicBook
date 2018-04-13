@@ -9,7 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.ottoboni.comicbook.features.common.BasePresenter
+import com.ottoboni.comicbook.features.base.BasePresenter
 
 
 class LoginPresenter(private val view: LoginView): BasePresenter {

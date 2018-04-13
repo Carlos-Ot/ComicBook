@@ -1,7 +1,7 @@
 package com.ottoboni.comicbook.features.main
 
 import com.ottoboni.comicbook.data.model.Collection
-import com.ottoboni.comicbook.features.common.BaseView
+import com.ottoboni.comicbook.features.base.BaseView
 
 /**
  * Created by caoj on 18/02/18.

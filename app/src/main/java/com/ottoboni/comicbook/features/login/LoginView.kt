@@ -1,7 +1,6 @@
 package com.ottoboni.comicbook.features.login
 
-import android.content.Context
-import com.ottoboni.comicbook.features.common.BaseView
+import com.ottoboni.comicbook.features.base.BaseView
 
 
 interface LoginView: BaseView<LoginPresenter> {
